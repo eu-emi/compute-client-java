@@ -31,6 +31,8 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import eu.emi.es.client.common.UserConfig;
+
 /**
  * Template class for doing resource discovery instantiated by the following
  * classes:
@@ -46,8 +48,24 @@ package eu.emi.es.client;
  *         17.09.2012 08:24:34
  * 
  */
-public class EntityRetriever<T> {
+public class EntityRetriever<T> implements EntityConsumer<T> {
 
+	private final UserConfig uc;
+	private final EndpointQueryOptions<T> options;
 
+	/**
+	 * 
+	 */
+	public EntityRetriever(UserConfig _uc, EndpointQueryOptions<T> _options) {
+		this.uc = _uc;
+		this.options = _options;
+	}
+
+	/**
+	 * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
+	 */
+	public void addEntity(T _job) {
+
+	}
 
 }

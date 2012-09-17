@@ -31,6 +31,8 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import eu.emi.es.client.common.UserConfig;
+
 /**
  * @author bjoernh
  *
@@ -38,5 +40,14 @@ package eu.emi.es.client;
  *
  */
 public class JobListRetriever extends EntityRetriever<Job> {
+
+	/**
+	 * @param _uc
+	 * @param _options
+	 */
+	public JobListRetriever(UserConfig _uc, EndpointQueryOptions<Job> _options) {
+		super(_uc, _options);
+		// TODO Auto-generated constructor stub
+	}
 
 }

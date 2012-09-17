@@ -31,24 +31,24 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
-import eu.emi.es.client.common.UserConfig;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author bjoernh
  *
- * 17.09.2012 08:28:47
+ * 17.09.2012 13:56:27
  *
  */
-public class ServiceEndpointRetriever extends EntityRetriever<Endpoint> {
+public class EntityContainer<T> {
+
+	private final List<T> entities;
 
 	/**
-	 * @param _uc
-	 * @param _options
+	 * 
 	 */
-	public ServiceEndpointRetriever(UserConfig _uc,
-			EndpointQueryOptions<Endpoint> _options) {
-		super(_uc, _options);
-		// TODO Auto-generated constructor stub
+	public EntityContainer() {
+		this.entities = new ArrayList<T>();
 	}
 
 }

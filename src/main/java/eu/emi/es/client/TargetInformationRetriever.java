@@ -31,6 +31,8 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import eu.emi.es.client.common.UserConfig;
+
 /**
  * @author bjoernh
  *
@@ -39,5 +41,15 @@ package eu.emi.es.client;
  */
 public class TargetInformationRetriever extends
 		EntityRetriever<ComputingServiceType> {
+
+	/**
+	 * @param _uc
+	 * @param _options
+	 */
+	public TargetInformationRetriever(UserConfig _uc,
+			EndpointQueryOptions<ComputingServiceType> _options) {
+		super(_uc, _options);
+		// TODO Auto-generated constructor stub
+	}
 
 }

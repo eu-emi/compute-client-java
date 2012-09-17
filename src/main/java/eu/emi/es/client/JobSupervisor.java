@@ -31,6 +31,11 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import java.net.URL;
+import java.util.List;
+
+import eu.emi.es.client.common.UserConfig;
+
 /**
  * Job management
  * 
@@ -39,8 +44,99 @@ package eu.emi.es.client;
  *         17.09.2012 08:21:46
  * 
  */
-public class JobSupervisor {
+public class JobSupervisor implements EntityConsumer<Job> {
 
+	private final UserConfig uc;
+	private final List<Job> jobs;
 
+	/**
+	 * 
+	 * @param _uc
+	 * @param _jobs
+	 */
+	public JobSupervisor(UserConfig _uc, List<Job> _jobs) {
+		this.uc = _uc;
+		this.jobs = _jobs;
+	}
+
+	/**
+	 * 
+	 * @param _job
+	 * @return
+	 */
+	public boolean addJob(Job _job) {
+		return jobs.add(_job);
+	}
+
+	/**
+	 * 
+	 * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
+	 */
+	public void addEntity(Job _job) {
+		addJob(_job);
+	}
+
+	public void selectValid() {
+
+	}
+
+	public void selectByStatus(List<JobState> _states) {
+
+	}
+
+	public void selectById(List<URL> _ids) {
+
+	}
+
+	public List<Job> getSelectedJobs() {
+		return null;
+	}
+
+	public List<Job> getAllJobs() {
+		return null;
+	}
+
+	public void clearSelection() {
+
+	}
+
+	public void update() {
+
+	}
+
+	public boolean retrieve(String _downloadDirPrefix, boolean _useJobName,
+			boolean _force, List<String> _downloadDirectories) {
+		return false;
+	}
+
+	public boolean renew() {
+		return false;
+	}
+
+	public boolean resume() {
+		return false;
+	}
+
+	public boolean cancel() {
+		return false;
+	}
+
+	public boolean clean() {
+		return false;
+	}
+
+	public boolean resubmit(int _destination, List<Endpoint> _endpoints,
+			List<Job> _resubmittedJobs,
+			List<String> _requestedSubmissionInterfaces) {
+		return false;
+	}
+
+	public List<URL> getIdsProcessed() {
+		return null;
+	}
+
+	public List<URL> getIdsNotProcessed() {
+		return null;
+	}
 
 }

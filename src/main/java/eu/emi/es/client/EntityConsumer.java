@@ -31,24 +31,12 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
-import eu.emi.es.client.common.UserConfig;
-
 /**
  * @author bjoernh
  *
- * 17.09.2012 08:28:47
+ * 17.09.2012 10:54:12
  *
  */
-public class ServiceEndpointRetriever extends EntityRetriever<Endpoint> {
-
-	/**
-	 * @param _uc
-	 * @param _options
-	 */
-	public ServiceEndpointRetriever(UserConfig _uc,
-			EndpointQueryOptions<Endpoint> _options) {
-		super(_uc, _options);
-		// TODO Auto-generated constructor stub
-	}
-
+public interface EntityConsumer<T> {
+	public void addEntity(T _entity);
 }

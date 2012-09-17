@@ -31,12 +31,79 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import eu.emi.es.client.common.UserConfig;
+
 /**
+ * Combines the functionality of the ServiceEndpointRetriever
+ * 
  * @author bjoernh
- *
- * 17.09.2012 08:25:00
- *
+ * 
+ *         17.09.2012 08:25:00
+ * 
  */
-public class ComputingServiceRetriever {
+public class ComputingServiceRetriever extends
+		EntityContainer<ComputingServiceType> implements
+		EntityConsumer<Endpoint> {
+
+	private final UserConfig uc;
+	private final List<Endpoint> endpoints;
+	private final List<String> rejectedServices;
+	private final List<String> preferredInterfaceNames;
+	private final List<String> capabilityFilter;
+
+	private final List<EntityConsumer<ComputingServiceType>> consumers;
+
+	/**
+	 * 
+	 * @param _uc
+	 */
+	public ComputingServiceRetriever(UserConfig _uc) {
+		this(_uc, new ArrayList<Endpoint>(), new ArrayList<String>(),
+				new ArrayList<String>(), new ArrayList<String>());
+	}
+	
+	/**
+	 * 
+	 * @param _uc
+	 * @param _services
+	 * @param _rejectedServices
+	 * @param _preferredInterfaceNames
+	 * @param _capabilityFilter
+	 */
+	public ComputingServiceRetriever(UserConfig _uc, List<Endpoint> _services,
+			List<String> _rejectedServices,
+			List<String> _preferredInterfaceNames,
+			List<String> _capabilityFilter) {
+		this.uc = _uc;
+		this.endpoints = _services;
+		this.rejectedServices = _rejectedServices;
+		this.preferredInterfaceNames = _preferredInterfaceNames;
+		this.capabilityFilter = _capabilityFilter;
+
+		this.consumers = new ArrayList<EntityConsumer<ComputingServiceType>>();
+	}
+
+	public void addEndpoint(Endpoint _service) {
+		endpoints.add(_service);
+	}
+
+	public void addConsumer(EntityConsumer<ComputingServiceType> c) {
+		consumers.add(c);
+	}
+
+	public void removeConsumer(EntityConsumer<ComputingServiceType> c) {
+		consumers.remove(c);
+	}
+
+	/**
+	 * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
+	 */
+	public void addEntity(Endpoint _entity) {
+		addEndpoint(_entity);
+
+	}
 
 }

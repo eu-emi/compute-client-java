@@ -31,24 +31,35 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
-import eu.emi.es.client.common.UserConfig;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author bjoernh
  *
- * 17.09.2012 08:28:47
+ * 17.09.2012 13:49:55
  *
  */
-public class ServiceEndpointRetriever extends EntityRetriever<Endpoint> {
+public class EndpointQueryOptions<T> {
+
+	private final boolean recursive;
+	private final List<String> capabilityFilter;
+	private final List<String> rejectedServices;
 
 	/**
-	 * @param _uc
-	 * @param _options
+	 * 
 	 */
-	public ServiceEndpointRetriever(UserConfig _uc,
-			EndpointQueryOptions<Endpoint> _options) {
-		super(_uc, _options);
-		// TODO Auto-generated constructor stub
+	public EndpointQueryOptions() {
+		this(false, new ArrayList<String>(), new ArrayList<String>());
 	}
 
+	/**
+	 * 
+	 */
+	public EndpointQueryOptions(boolean _recursive,
+			List<String> _capabilityFilter, List<String> _rejectedServices) {
+		this.recursive = _recursive;
+		this.capabilityFilter = _capabilityFilter;
+		this.rejectedServices = _rejectedServices;
+	}
 }
