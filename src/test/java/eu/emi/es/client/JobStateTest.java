@@ -31,32 +31,57 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 /**
  * @author bjoernh
  *
- * 17.09.2012 08:32:54
+ * 17.09.2012 10:41:47
  *
  */
-public enum JobState {
-	ACCEPTED, PREPARING, SUBMITTING, HOLD, QUEUEING, RUNNING, FINISHING, FINISHED, KILLED, FAILED, DELETED, OTHER;
-	
+public class JobStateTest {
+
 	/**
-	 * Check whether the current state is final.
-	 * 
-	 * @return
+	 * @throws java.lang.Exception
 	 */
-	public boolean isFinished() {
-		return this.equals(FINISHED) || this.equals(KILLED)
-				|| this.equals(FAILED) || this.equals(DELETED);
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 	}
-	
-	public String getGeneralState() {
-		return null;
-		
+
+	/**
+	 * Test method for {@link eu.emi.es.client.JobState#isFinished()}.
+	 */
+	@Test
+	public void testIsFinished() {
+		// These are expected to be final states
+		JobState state = JobState.FINISHED;
+		Assert.assertTrue(state.isFinished());
+		state = JobState.FAILED;
+		Assert.assertTrue(state.isFinished());
+		state = JobState.KILLED;
+		Assert.assertTrue(state.isFinished());
+		state = JobState.DELETED;
+		Assert.assertTrue(state.isFinished());
+
+		// The following must not be final
+		state = JobState.ACCEPTED;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.FINISHING;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.HOLD;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.OTHER;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.PREPARING;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.QUEUEING;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.RUNNING;
+		Assert.assertFalse(state.isFinished());
+		state = JobState.SUBMITTING;
+		Assert.assertFalse(state.isFinished());
 	}
-	
-	public String getSpecificState() {
-		return null;
-		
-	}
+
 }
