@@ -50,22 +50,22 @@ import eu.emi.es.client.common.UserConfig;
  */
 public class EntityRetriever<T> implements EntityConsumer<T> {
 
-	private final UserConfig uc;
-	private final EndpointQueryOptions<T> options;
+    private final UserConfig uc;
+    private final EndpointQueryOptions<T> options;
 
-	/**
+    /**
 	 * 
 	 */
-	public EntityRetriever(UserConfig _uc, EndpointQueryOptions<T> _options) {
-		this.uc = _uc;
-		this.options = _options;
-	}
+    public EntityRetriever(UserConfig _uc, EndpointQueryOptions<T> _options) {
+        this.uc = _uc;
+        this.options = _options;
+    }
 
-	/**
-	 * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
-	 */
-	public void addEntity(T _job) {
+    /**
+     * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
+     */
+    public void addEntity(T _job) {
 
-	}
+    }
 
 }

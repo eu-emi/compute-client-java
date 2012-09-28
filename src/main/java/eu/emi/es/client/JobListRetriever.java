@@ -35,19 +35,19 @@ import eu.emi.es.client.common.UserConfig;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:29:48
- *
+ * 
+ *         17.09.2012 08:29:48
+ * 
  */
 public class JobListRetriever extends EntityRetriever<Job> {
 
-	/**
-	 * @param _uc
-	 * @param _options
-	 */
-	public JobListRetriever(UserConfig _uc, EndpointQueryOptions<Job> _options) {
-		super(_uc, _options);
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * @param _uc
+     * @param _options
+     */
+    public JobListRetriever(UserConfig _uc, EndpointQueryOptions<Job> _options) {
+        super(_uc, _options);
+        // TODO Auto-generated constructor stub
+    }
 
 }

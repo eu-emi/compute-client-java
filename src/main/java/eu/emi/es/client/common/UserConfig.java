@@ -33,89 +33,89 @@ package eu.emi.es.client.common;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:30:09
- *
+ * 
+ *         17.09.2012 08:30:09
+ * 
  */
 public class UserConfig {
-	private String proxyPath;
-	private String certificatePath;
-	private String keyPath;
-	private String caCertificatePath;
-	private String caCertificatesDirectory;
+    private String proxyPath;
+    private String certificatePath;
+    private String keyPath;
+    private String caCertificatePath;
+    private String caCertificatesDirectory;
 
-	/**
-	 * @return the proxyPath
-	 */
-	public String getProxyPath() {
-		return proxyPath;
-	}
+    /**
+     * @return the proxyPath
+     */
+    public String getProxyPath() {
+        return proxyPath;
+    }
 
-	/**
-	 * @param proxyPath
-	 *            the proxyPath to set
-	 */
-	public void setProxyPath(String proxyPath) {
-		this.proxyPath = proxyPath;
-	}
+    /**
+     * @param proxyPath
+     *            the proxyPath to set
+     */
+    public void setProxyPath(String proxyPath) {
+        this.proxyPath = proxyPath;
+    }
 
-	/**
-	 * @return the certificatePath
-	 */
-	public String getCertificatePath() {
-		return certificatePath;
-	}
+    /**
+     * @return the certificatePath
+     */
+    public String getCertificatePath() {
+        return certificatePath;
+    }
 
-	/**
-	 * @param certificatePath
-	 *            the certificatePath to set
-	 */
-	public void setCertificatePath(String certificatePath) {
-		this.certificatePath = certificatePath;
-	}
+    /**
+     * @param certificatePath
+     *            the certificatePath to set
+     */
+    public void setCertificatePath(String certificatePath) {
+        this.certificatePath = certificatePath;
+    }
 
-	/**
-	 * @return the keyPath
-	 */
-	public String getKeyPath() {
-		return keyPath;
-	}
+    /**
+     * @return the keyPath
+     */
+    public String getKeyPath() {
+        return keyPath;
+    }
 
-	/**
-	 * @param keyPath
-	 *            the keyPath to set
-	 */
-	public void setKeyPath(String keyPath) {
-		this.keyPath = keyPath;
-	}
+    /**
+     * @param keyPath
+     *            the keyPath to set
+     */
+    public void setKeyPath(String keyPath) {
+        this.keyPath = keyPath;
+    }
 
-	/**
-	 * @return the caCertificatePath
-	 */
-	public String getCaCertificatePath() {
-		return caCertificatePath;
-	}
+    /**
+     * @return the caCertificatePath
+     */
+    public String getCaCertificatePath() {
+        return caCertificatePath;
+    }
 
-	/**
-	 * @param caCertificatePath
-	 *            the caCertificatePath to set
-	 */
-	public void setCaCertificatePath(String caCertificatePath) {
-		this.caCertificatePath = caCertificatePath;
-	}
+    /**
+     * @param caCertificatePath
+     *            the caCertificatePath to set
+     */
+    public void setCaCertificatePath(String caCertificatePath) {
+        this.caCertificatePath = caCertificatePath;
+    }
 
-	/**
-	 * @return the caCertificatesDirectory
-	 */
-	public String getCaCertificatesDirectory() {
-		return caCertificatesDirectory;
-	}
+    /**
+     * @return the caCertificatesDirectory
+     */
+    public String getCaCertificatesDirectory() {
+        return caCertificatesDirectory;
+    }
 
-	/**
-	 * @param caCertificatesDirectory
-	 *            the caCertificatesDirectory to set
-	 */
-	public void setCaCertificatesDirectory(String caCertificatesDirectory) {
-		this.caCertificatesDirectory = caCertificatesDirectory;
-	}
+    /**
+     * @param caCertificatesDirectory
+     *            the caCertificatesDirectory to set
+     */
+    public void setCaCertificatesDirectory(String caCertificatesDirectory) {
+        this.caCertificatesDirectory = caCertificatesDirectory;
+    }
 }

@@ -33,10 +33,10 @@ package eu.emi.es.client;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:36:18
- *
+ * 
+ *         17.09.2012 08:36:18
+ * 
  */
 public enum EndpointQueryingStatus {
-	UNKNOWN, STARTED, FAILED, NOPLUGIN, SUCCESSFUL
+    UNKNOWN, STARTED, FAILED, NOPLUGIN, SUCCESSFUL
 }

@@ -36,19 +36,19 @@ import java.util.List;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 13:56:27
- *
+ * 
+ *         17.09.2012 13:56:27
+ * 
  */
 public class EntityContainer<T> {
 
-	private final List<T> entities;
+    private final List<T> entities;
 
-	/**
+    /**
 	 * 
 	 */
-	public EntityContainer() {
-		this.entities = new ArrayList<T>();
-	}
+    public EntityContainer() {
+        this.entities = new ArrayList<T>();
+    }
 
 }

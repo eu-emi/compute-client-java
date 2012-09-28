@@ -41,5 +41,4 @@ package eu.emi.es.client;
  */
 public class JobDescription {
 
-
 }

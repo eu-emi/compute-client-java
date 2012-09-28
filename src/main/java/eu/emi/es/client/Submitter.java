@@ -47,109 +47,109 @@ import eu.emi.es.client.common.UserConfig;
  * 
  */
 public class Submitter {
-	private final UserConfig uc;
+    private final UserConfig uc;
 
-	private final Set<EntityConsumer<Job>> consumers;
+    private final Set<EntityConsumer<Job>> consumers;
 
-	/**
+    /**
  * 
  */
-	public Submitter(UserConfig _uc) {
-		this.uc = _uc;
-		this.consumers = new HashSet<EntityConsumer<Job>>();
-	}
+    public Submitter(UserConfig _uc) {
+        this.uc = _uc;
+        this.consumers = new HashSet<EntityConsumer<Job>>();
+    }
 
-	void addConsumer(EntityConsumer<Job> _jc) {
-		consumers.add(_jc);
-	}
+    void addConsumer(EntityConsumer<Job> _jc) {
+        consumers.add(_jc);
+    }
 
-	void removeConsumer(EntityConsumer<Job> _jc) {
-		consumers.remove(_jc);
-	}
+    void removeConsumer(EntityConsumer<Job> _jc) {
+        consumers.remove(_jc);
+    }
 
-	public boolean submit(ExecutionTarget _target, JobDescription _desc) {
-		// TODO: empty method stub
-		return false;
-	}
+    public boolean submit(ExecutionTarget _target, JobDescription _desc) {
+        // TODO: empty method stub
+        return false;
+    }
 
-	public boolean submit(ExecutionTarget _target, JobDescription _desc,
-			Job _job) {
-		// TODO empty method stub
-		return false;
-	}
+    public boolean submit(ExecutionTarget _target, JobDescription _desc,
+            Job _job) {
+        // TODO empty method stub
+        return false;
+    }
 
-	public boolean submit(ExecutionTarget _target, List<JobDescription> _descs) {
-		// TODO empty method stub
-		return false;
-	}
+    public boolean submit(ExecutionTarget _target, List<JobDescription> _descs) {
+        // TODO empty method stub
+        return false;
+    }
 
-	public boolean submit(ExecutionTarget _target, List<JobDescription> _descs,
-			List<Job> _jobs) {
-		// TODO empty method stub
-		return false;
-	}
+    public boolean submit(ExecutionTarget _target, List<JobDescription> _descs,
+            List<Job> _jobs) {
+        // TODO empty method stub
+        return false;
+    }
 
-	// Java type erasure does not allow these alternative methods, as they
-	// essentially
-	// have the same signature
-	// public EndpointSubmissionStatus brokeredSubmit(List<String> _endpoints,
-	// List<JobDescription> _descs,
-	// List<String> _requestedSubmissionInterfaces) {
-	// return EndpointSubmissionStatus.UNKNOWN;
-	// }
-	//
-	// public EndpointSubmissionStatus brokeredSubmit(List<String> _endpoints,
-	// List<JobDescription> _descs, List<Job> _jobs,
-	// List<String> _requestedSubmissionInterfaces) {
-	// return EndpointSubmissionStatus.UNKNOWN;
-	// }
+    // Java type erasure does not allow these alternative methods, as they
+    // essentially
+    // have the same signature
+    // public EndpointSubmissionStatus brokeredSubmit(List<String> _endpoints,
+    // List<JobDescription> _descs,
+    // List<String> _requestedSubmissionInterfaces) {
+    // return EndpointSubmissionStatus.UNKNOWN;
+    // }
+    //
+    // public EndpointSubmissionStatus brokeredSubmit(List<String> _endpoints,
+    // List<JobDescription> _descs, List<Job> _jobs,
+    // List<String> _requestedSubmissionInterfaces) {
+    // return EndpointSubmissionStatus.UNKNOWN;
+    // }
 
-	public EndpointSubmissionStatus brokeredSubmit(List<Endpoint> _endpoints,
-			List<JobDescription> _descs,
-			List<String> _requestedSubmissionInterfaces) {
-		return EndpointSubmissionStatus.UNKNOWN;
-	}
+    public EndpointSubmissionStatus brokeredSubmit(List<Endpoint> _endpoints,
+            List<JobDescription> _descs,
+            List<String> _requestedSubmissionInterfaces) {
+        return EndpointSubmissionStatus.UNKNOWN;
+    }
 
-	public EndpointSubmissionStatus brokeredSubmit(List<Endpoint> _endpoints,
-			List<JobDescription> _descs, List<Job> _jobs,
-			List<String> _requestedSubmissionInterfaces) {
-		return EndpointSubmissionStatus.UNKNOWN;
-	}
+    public EndpointSubmissionStatus brokeredSubmit(List<Endpoint> _endpoints,
+            List<JobDescription> _descs, List<Job> _jobs,
+            List<String> _requestedSubmissionInterfaces) {
+        return EndpointSubmissionStatus.UNKNOWN;
+    }
 
-	public List<JobDescription> getJobDescriptionsNotSubmitted() {
-		// TODO empty method stub
-		return null;
-	}
+    public List<JobDescription> getJobDescriptionsNotSubmitted() {
+        // TODO empty method stub
+        return null;
+    }
 
-	public void clearNotSubmittedDescriptions() {
+    public void clearNotSubmittedDescriptions() {
 
-	}
+    }
 
-	public Map<Endpoint, EndpointQueryingStatus> getEndpointQueryingStatuses() {
-		return null;
-	}
+    public Map<Endpoint, EndpointQueryingStatus> getEndpointQueryingStatuses() {
+        return null;
+    }
 
-	public void clearEndpointQueryingStatuses() {
+    public void clearEndpointQueryingStatuses() {
 
-	}
+    }
 
-	public Map<Endpoint, EndpointSubmissionStatus> getEndpointSubmissionStatuses() {
-		return null;
-	}
+    public Map<Endpoint, EndpointSubmissionStatus> getEndpointSubmissionStatuses() {
+        return null;
+    }
 
-	public void clearEndpointSubmissionStatuses() {
+    public void clearEndpointSubmissionStatuses() {
 
-	}
+    }
 
-	public void clearAllStatuses() {
+    public void clearAllStatuses() {
 
-		clearEndpointQueryingStatuses();
-		clearEndpointSubmissionStatuses();
-	}
+        clearEndpointQueryingStatuses();
+        clearEndpointSubmissionStatuses();
+    }
 
-	public void clearAll() {
-		clearNotSubmittedDescriptions();
-		clearAllStatuses();
-	}
+    public void clearAll() {
+        clearNotSubmittedDescriptions();
+        clearAllStatuses();
+    }
 
 }

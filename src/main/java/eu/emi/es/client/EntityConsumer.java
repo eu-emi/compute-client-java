@@ -33,10 +33,10 @@ package eu.emi.es.client;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 10:54:12
- *
+ * 
+ *         17.09.2012 10:54:12
+ * 
  */
 public interface EntityConsumer<T> {
-	public void addEntity(T _entity);
+    public void addEntity(T _entity);
 }

@@ -35,21 +35,21 @@ import eu.emi.es.client.common.UserConfig;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:29:27
- *
+ * 
+ *         17.09.2012 08:29:27
+ * 
  */
 public class TargetInformationRetriever extends
-		EntityRetriever<ComputingServiceType> {
+        EntityRetriever<ComputingServiceType> {
 
-	/**
-	 * @param _uc
-	 * @param _options
-	 */
-	public TargetInformationRetriever(UserConfig _uc,
-			EndpointQueryOptions<ComputingServiceType> _options) {
-		super(_uc, _options);
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * @param _uc
+     * @param _options
+     */
+    public TargetInformationRetriever(UserConfig _uc,
+            EndpointQueryOptions<ComputingServiceType> _options) {
+        super(_uc, _options);
+        // TODO Auto-generated constructor stub
+    }
 
 }

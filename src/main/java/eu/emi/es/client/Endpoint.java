@@ -36,62 +36,62 @@ import java.util.Set;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:34:38
- *
+ * 
+ *         17.09.2012 08:34:38
+ * 
  */
 public class Endpoint {
 
-	public enum CapabilityEnum {
-		REGISTRY, COMPUTINGINFO, JOBLIST, JOBSUBMIT, JOBMANAGEMENT, UNSPECIFIED;
-	}
+    public enum CapabilityEnum {
+        REGISTRY, COMPUTINGINFO, JOBLIST, JOBSUBMIT, JOBMANAGEMENT, UNSPECIFIED;
+    }
 
-	private final String interfaceName;
-	private final URL url;
-	private Set<CapabilityEnum> capabilities;
+    private final String interfaceName;
+    private final URL url;
+    private Set<CapabilityEnum> capabilities;
 
-	/**
+    /**
 	 * 
 	 */
-	public Endpoint(URL _url, String _interfaceName) {
-		this.url = _url;
-		this.interfaceName = _interfaceName;
-	}
+    public Endpoint(URL _url, String _interfaceName) {
+        this.url = _url;
+        this.interfaceName = _interfaceName;
+    }
 
-	/**
+    /**
 	 * 
 	 */
-	public Endpoint(URL _url) {
-		this(_url, null);
-	}
+    public Endpoint(URL _url) {
+        this(_url, null);
+    }
 
-	/**
-	 * @return the capabilities
-	 */
-	public Set<CapabilityEnum> getCapabilities() {
-		return capabilities;
-	}
+    /**
+     * @return the capabilities
+     */
+    public Set<CapabilityEnum> getCapabilities() {
+        return capabilities;
+    }
 
-	/**
-	 * @param capabilities
-	 *            the capabilities to set
-	 */
-	public void setCapabilities(Set<CapabilityEnum> capabilities) {
-		this.capabilities = capabilities;
-	}
+    /**
+     * @param capabilities
+     *            the capabilities to set
+     */
+    public void setCapabilities(Set<CapabilityEnum> capabilities) {
+        this.capabilities = capabilities;
+    }
 
-	/**
-	 * @return the interfaceName
-	 */
-	public String getInterfaceName() {
-		return interfaceName;
-	}
+    /**
+     * @return the interfaceName
+     */
+    public String getInterfaceName() {
+        return interfaceName;
+    }
 
-	/**
-	 * @return the url
-	 */
-	public URL getUrl() {
-		return url;
-	}
+    /**
+     * @return the url
+     */
+    public URL getUrl() {
+        return url;
+    }
 
 }

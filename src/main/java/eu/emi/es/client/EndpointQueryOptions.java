@@ -36,30 +36,30 @@ import java.util.List;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 13:49:55
- *
+ * 
+ *         17.09.2012 13:49:55
+ * 
  */
 public class EndpointQueryOptions<T> {
 
-	private final boolean recursive;
-	private final List<String> capabilityFilter;
-	private final List<String> rejectedServices;
+    private final boolean recursive;
+    private final List<String> capabilityFilter;
+    private final List<String> rejectedServices;
 
-	/**
+    /**
 	 * 
 	 */
-	public EndpointQueryOptions() {
-		this(false, new ArrayList<String>(), new ArrayList<String>());
-	}
+    public EndpointQueryOptions() {
+        this(false, new ArrayList<String>(), new ArrayList<String>());
+    }
 
-	/**
+    /**
 	 * 
 	 */
-	public EndpointQueryOptions(boolean _recursive,
-			List<String> _capabilityFilter, List<String> _rejectedServices) {
-		this.recursive = _recursive;
-		this.capabilityFilter = _capabilityFilter;
-		this.rejectedServices = _rejectedServices;
-	}
+    public EndpointQueryOptions(boolean _recursive,
+            List<String> _capabilityFilter, List<String> _rejectedServices) {
+        this.recursive = _recursive;
+        this.capabilityFilter = _capabilityFilter;
+        this.rejectedServices = _rejectedServices;
+    }
 }

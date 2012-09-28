@@ -44,47 +44,47 @@ import eu.emi.es.client.common.UserConfig;
  * 
  */
 public class Job {
-	private JobState state;
+    private JobState state;
 
-	/**
-	 * The C++ implementation takes an XMLNode object, need to check how this
-	 * fits in.
-	 * 
-	 * @param job
-	 */
-	public void update(Object job) {
+    /**
+     * The C++ implementation takes an XMLNode object, need to check how this
+     * fits in.
+     * 
+     * @param job
+     */
+    public void update(Object job) {
 
-	}
-	
-	public boolean update() {
-		return false;
-	}
-	
-	public boolean clean() {
-		return false;
-	}
-	
-	public boolean cancel() {
-		return false;
-	}
-	
-	public boolean resume() {
-		return false;
-	}
-	
-	public boolean renew() {
-		return false;
-	}
-	
-	public boolean prepareHandler(UserConfig _uc) {
-		return false;
-	}
-	
-	public URL getUrlToResource(ResourcesType _resource) {
-		return null;
-	}
+    }
 
-	public boolean retrieve(UserConfig _uc, URL _destination, boolean _force) {
-		return false;
-	}
+    public boolean update() {
+        return false;
+    }
+
+    public boolean clean() {
+        return false;
+    }
+
+    public boolean cancel() {
+        return false;
+    }
+
+    public boolean resume() {
+        return false;
+    }
+
+    public boolean renew() {
+        return false;
+    }
+
+    public boolean prepareHandler(UserConfig _uc) {
+        return false;
+    }
+
+    public URL getUrlToResource(ResourcesType _resource) {
+        return null;
+    }
+
+    public boolean retrieve(UserConfig _uc, URL _destination, boolean _force) {
+        return false;
+    }
 }

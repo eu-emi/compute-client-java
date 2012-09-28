@@ -33,30 +33,30 @@ package eu.emi.es.client;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:32:54
- *
+ * 
+ *         17.09.2012 08:32:54
+ * 
  */
 public enum JobState {
-	ACCEPTED, PREPARING, SUBMITTING, HOLD, QUEUEING, RUNNING, FINISHING, FINISHED, KILLED, FAILED, DELETED, OTHER;
-	
-	/**
-	 * Check whether the current state is final.
-	 * 
-	 * @return
-	 */
-	public boolean isFinished() {
-		return this.equals(FINISHED) || this.equals(KILLED)
-				|| this.equals(FAILED) || this.equals(DELETED);
-	}
-	
-	public String getGeneralState() {
-		return null;
-		
-	}
-	
-	public String getSpecificState() {
-		return null;
-		
-	}
+    ACCEPTED, PREPARING, SUBMITTING, HOLD, QUEUEING, RUNNING, FINISHING, FINISHED, KILLED, FAILED, DELETED, OTHER;
+
+    /**
+     * Check whether the current state is final.
+     * 
+     * @return
+     */
+    public boolean isFinished() {
+        return this.equals(FINISHED) || this.equals(KILLED)
+                || this.equals(FAILED) || this.equals(DELETED);
+    }
+
+    public String getGeneralState() {
+        return null;
+
+    }
+
+    public String getSpecificState() {
+        return null;
+
+    }
 }

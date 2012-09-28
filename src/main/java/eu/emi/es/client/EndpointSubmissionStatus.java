@@ -33,10 +33,10 @@ package eu.emi.es.client;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:35:28
- *
+ * 
+ *         17.09.2012 08:35:28
+ * 
  */
 public enum EndpointSubmissionStatus {
-	UNKNOWN, NOPLUGIN, SUCCESSFUL
+    UNKNOWN, NOPLUGIN, SUCCESSFUL
 }

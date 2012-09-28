@@ -33,34 +33,34 @@ package eu.emi.es.client;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:41:27
- *
+ * 
+ *         17.09.2012 08:41:27
+ * 
  */
 public class JobDescriptionResult {
-	private final boolean success;
-	private final String result;
+    private final boolean success;
+    private final String result;
 
-	/**
+    /**
 	 * 
 	 */
-	public JobDescriptionResult(boolean _success, String _result) {
-		this.success = _success;
-		this.result = _result;
-	}
+    public JobDescriptionResult(boolean _success, String _result) {
+        this.success = _success;
+        this.result = _result;
+    }
 
-	/**
-	 * @return the success
-	 */
-	public boolean isSuccess() {
-		return success;
-	}
+    /**
+     * @return the success
+     */
+    public boolean isSuccess() {
+        return success;
+    }
 
-	/**
-	 * @return the result
-	 */
-	public String getResult() {
-		return result;
-	}
+    /**
+     * @return the result
+     */
+    public String getResult() {
+        return result;
+    }
 
 }

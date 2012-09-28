@@ -33,9 +33,9 @@ package eu.emi.es.client;
 
 /**
  * @author bjoernh
- *
- * 17.09.2012 08:34:06
- *
+ * 
+ *         17.09.2012 08:34:06
+ * 
  */
 public class ComputingServiceType {
 
