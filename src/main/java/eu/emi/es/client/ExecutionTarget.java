@@ -32,6 +32,19 @@
 package eu.emi.es.client;
 
 /**
+ * This class describes a target which accepts computing jobs. This is usually a
+ * queue on a computing element accessible through a single interface. If a
+ * computing element has multiple interfaces (e.g. NorduGrid’s GridFTP, XBES and
+ * EMIES), one queue would be represented by multiple ExecutionTarget objects,
+ * one for each interface. All of the members contained in this class, with a
+ * few exceptions, are directly linked to attributes defined in the GLUE2
+ * Specification. ExecutionTarget objects are generated from
+ * ComputingServiceType objects.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/ExecutionTarget.h"
+ * >ExecutionTarget.h</a>
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 08:33:56

@@ -32,6 +32,13 @@
 package eu.emi.es.client;
 
 /**
+ * The EntityConsumer class is a template class with one type as input and
+ * having a single pure virtual method, thus in Java terms it is an interface.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/EntityRetriever.h>EntityRetriever.h</a
+ * >
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 10:54:12

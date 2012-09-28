@@ -39,7 +39,16 @@ import java.util.Set;
 import eu.emi.es.client.common.UserConfig;
 
 /**
- * Job submission
+ * The Submitter class can be used to submit job descriptions to computing
+ * elements. It returns a Job object for each successful submission. It can
+ * submit to a single ExecutionTarget or can invoke resource discovery, do
+ * match-making and sorting of the computing resources, and then submit to
+ * appropriate resource. The latter option utilizes the
+ * ComputingServiceRetriever and Broker classes.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/Submitter.h"
+ * >Submitter.h</a>
  * 
  * @author bjoernh
  * 
@@ -52,37 +61,89 @@ public class Submitter {
     private final Set<EntityConsumer<Job>> consumers;
 
     /**
- * 
- */
+     * 
+     * @param _uc
+     */
     public Submitter(UserConfig _uc) {
         this.uc = _uc;
         this.consumers = new HashSet<EntityConsumer<Job>>();
     }
 
+    /**
+     * The Submitter class can send the submitted Job objects to registered
+     * consumers (e.g. a JobSupervisor object)
+     * 
+     * @param _jc
+     */
     void addConsumer(EntityConsumer<Job> _jc) {
         consumers.add(_jc);
     }
 
+    /**
+     * The Submitter class can send the submitted Job objects to registered
+     * consumers (e.g. a JobSupervisor object).
+     * 
+     * @param _jc
+     * @see #addConsumer(EntityConsumer)
+     */
     void removeConsumer(EntityConsumer<Job> _jc) {
         consumers.remove(_jc);
     }
 
+    /**
+     * To submit one or more job descriptions (strings or objects) to a single
+     * ExecutionTarget object (with getting the resulting Job object as an
+     * output argument or through registered consumers).
+     * 
+     * @param _target
+     * @param _desc
+     * @return
+     */
     public boolean submit(ExecutionTarget _target, JobDescription _desc) {
         // TODO: empty method stub
         return false;
     }
 
+    /**
+     * To submit one or more job descriptions (strings or objects) to a single
+     * ExecutionTarget object (with getting the resulting Job object as an
+     * output argument or through registered consumers).
+     * 
+     * @param _target
+     * @param _desc
+     * @param _job
+     * @return
+     */
     public boolean submit(ExecutionTarget _target, JobDescription _desc,
             Job _job) {
         // TODO empty method stub
         return false;
     }
 
+    /**
+     * To submit one or more job descriptions (strings or objects) to a single
+     * ExecutionTarget object (with getting the resulting Job object as an
+     * output argument or through registered consumers).
+     * 
+     * @param _target
+     * @param _descs
+     * @return
+     */
     public boolean submit(ExecutionTarget _target, List<JobDescription> _descs) {
         // TODO empty method stub
         return false;
     }
 
+    /**
+     * To submit one or more job descriptions (strings or objects) to a single
+     * ExecutionTarget object (with getting the resulting Job object as an
+     * output argument or through registered consumers).
+     * 
+     * @param _target
+     * @param _descs
+     * @param _jobs
+     * @return
+     */
     public boolean submit(ExecutionTarget _target, List<JobDescription> _descs,
             List<Job> _jobs) {
         // TODO empty method stub
@@ -91,7 +152,8 @@ public class Submitter {
 
     // Java type erasure does not allow these alternative methods, as they
     // essentially
-    // have the same signature
+    // have the same signature as the ones below. We opted for offering the ones
+    // accepting JobDescriptions rather than Strings.
     // public EndpointSubmissionStatus brokeredSubmit(List<String> _endpoints,
     // List<JobDescription> _descs,
     // List<String> _requestedSubmissionInterfaces) {
@@ -104,12 +166,33 @@ public class Submitter {
     // return EndpointSubmissionStatus.UNKNOWN;
     // }
 
+    /**
+     * To do brokering among several endpoints (strings or objects) and submit
+     * multiple JobDescription objects (with getting the resulting Job objects
+     * as output argument or through registered consumers).
+     * 
+     * @param _endpoints
+     * @param _descs
+     * @param _requestedSubmissionInterfaces
+     * @return
+     */
     public EndpointSubmissionStatus brokeredSubmit(List<Endpoint> _endpoints,
             List<JobDescription> _descs,
             List<String> _requestedSubmissionInterfaces) {
         return EndpointSubmissionStatus.UNKNOWN;
     }
 
+    /**
+     * To do brokering among several endpoints (strings or objects) and submit
+     * multiple JobDescription objects (with getting the resulting Job objects
+     * as output argument or through registered consumers).
+     * 
+     * @param _endpoints
+     * @param _descs
+     * @param _jobs
+     * @param _requestedSubmissionInterfaces
+     * @return
+     */
     public EndpointSubmissionStatus brokeredSubmit(List<Endpoint> _endpoints,
             List<JobDescription> _descs, List<Job> _jobs,
             List<String> _requestedSubmissionInterfaces) {

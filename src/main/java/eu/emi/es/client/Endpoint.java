@@ -35,6 +35,20 @@ import java.net.URL;
 import java.util.Set;
 
 /**
+ * This class represents an endpoint of a service with a given interface type
+ * and capabilities. The type of the interface is described by a string called
+ * InterfaceName (from GLUE2 specification). An Endpoint object must have a URL,
+ * and it is quite useless without capabilities (the system has to know if an
+ * Endpoint object represents a service registry or a computing element), but
+ * the InterfaceName is optional. The Endpoint object also contains information
+ * about the health state and quality level of the endpoint, and optionally the
+ * requested submission interface name, which will be used later if a job will
+ * be submitted to a computing element related to this endpoint.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/Endpoint.h"
+ * >Endpoint.h</a>
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 08:34:38

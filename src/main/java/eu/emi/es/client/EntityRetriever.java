@@ -31,17 +31,33 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import eu.emi.es.client.common.UserConfig;
 
 /**
  * Template class for doing resource discovery instantiated by the following
- * classes:
+ * classes.
+ * 
+ * The EntityRetriever is a general template class querying Endpoints to
+ * retrieve “entities” (the type of the entities is the type parameter of the
+ * template). Querying of the Endpoints is done by entity specific plugins, and
+ * it is performed parallel in separate threads. The results are sent to the
+ * registered EntityConsumer objects. Currently there are three instances of
+ * this template.
  * 
  * <ul>
  * <li>ServiceEndpointRetriever</li>
  * <li>TargetInformationRetriever</li>
  * <li>EntityRetriever</li>
  * </ul>
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/EntityRetriever.h"
+ * >EntityRetriever.h</a>
  * 
  * @author bjoernh
  * 
@@ -52,13 +68,47 @@ public class EntityRetriever<T> implements EntityConsumer<T> {
 
     private final UserConfig uc;
     private final EndpointQueryOptions<T> options;
+    private final List<Endpoint> endpoints;
+    private final List<EntityConsumer<T>> consumers;
+    private final Map<Endpoint, EndpointQueryingStatus> queryingStatuses;
 
     /**
-	 * 
-	 */
+     * Create a new instance.
+     * 
+     * @param _uc
+     * @param _options
+     */
     public EntityRetriever(UserConfig _uc, EndpointQueryOptions<T> _options) {
         this.uc = _uc;
         this.options = _options;
+        
+        this.endpoints = new ArrayList<Endpoint>();
+        this.consumers = new ArrayList<EntityConsumer<T>>();
+        this.queryingStatuses = new HashMap<Endpoint, EndpointQueryingStatus>();
+    }
+
+    /**
+     * 
+     * @param _consumer
+     */
+    public void addConsumer(EntityConsumer<T> _consumer) {
+        consumers.add(_consumer);
+    }
+
+    /**
+     * 
+     * @param _consumer
+     */
+    public void removeConsumer(EntityConsumer<T> _consumer) {
+        consumers.remove(_consumer);
+    }
+
+    /**
+     * 
+     * @param _ep
+     */
+    public void addEndpoint(Endpoint _ep) {
+        endpoints.add(_ep);
     }
 
     /**
@@ -66,6 +116,39 @@ public class EntityRetriever<T> implements EntityConsumer<T> {
      */
     public void addEntity(T _job) {
 
+    }
+
+    /**
+     * 
+     * @param _ep
+     * @return
+     */
+    public EndpointQueryingStatus getStatusOfEndpoint(Endpoint _ep) {
+        // TODO return meaningful values
+        return EndpointQueryingStatus.UNKNOWN;
+    }
+
+    public Map<Endpoint, EndpointQueryingStatus> getAllStatuses() {
+        return queryingStatuses;
+    }
+
+    /**
+     * Wait for the query process to finish.
+     * 
+     * Equivalent of the wait() method of the C++ API
+     */
+    public void block() {
+
+    }
+
+    /**
+     * Check whether the query process has finished.
+     * 
+     * @return
+     */
+    public boolean isDone() {
+        // TODO return sth. meaningful
+        return false;
     }
 
 }

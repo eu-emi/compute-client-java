@@ -32,7 +32,15 @@
 package eu.emi.es.client;
 
 /**
- * Job description parsing, and container for job description attributes
+ * This class is used as a structure to hold job description attributes, not
+ * from a particular language but is meant to be a general structure. It also
+ * provides methods for parsing and creating job descriptions in the formats
+ * supported by the available plugins (which means it’s capable of translating a
+ * job description from one format to another).
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/JobDescription.h"
+ * >JobDescription.h</a>
  * 
  * @author bjoernh
  * 

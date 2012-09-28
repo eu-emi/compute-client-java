@@ -45,12 +45,18 @@ public class EndpointQueryOptions<T> {
     private final boolean recursive;
     private final List<String> capabilityFilter;
     private final List<String> rejectedServices;
+    private final List<String> preferredInterfaceNames;
 
-    /**
-	 * 
-	 */
-    public EndpointQueryOptions() {
-        this(false, new ArrayList<String>(), new ArrayList<String>());
+    public EndpointQueryOptions(List<String> _preferredInterfaceNames) {
+        if (_preferredInterfaceNames != null) {
+            this.preferredInterfaceNames = _preferredInterfaceNames;
+        } else {
+            this.preferredInterfaceNames = new ArrayList<String>();
+        }
+        this.capabilityFilter = new ArrayList<String>();
+        this.rejectedServices = new ArrayList<String>();
+
+        this.recursive = false;
     }
 
     /**
@@ -61,5 +67,35 @@ public class EndpointQueryOptions<T> {
         this.recursive = _recursive;
         this.capabilityFilter = _capabilityFilter;
         this.rejectedServices = _rejectedServices;
+
+        this.preferredInterfaceNames = new ArrayList<String>();
+    }
+
+    /**
+     * @return the recursive
+     */
+    public boolean isRecursive() {
+        return recursive;
+    }
+
+    /**
+     * @return the capabilityFilter
+     */
+    public List<String> getCapabilityFilter() {
+        return capabilityFilter;
+    }
+
+    /**
+     * @return the rejectedServices
+     */
+    public List<String> getRejectedServices() {
+        return rejectedServices;
+    }
+
+    /**
+     * @return the preferredInterfaceNames
+     */
+    public List<String> getPreferredInterfaceNames() {
+        return preferredInterfaceNames;
     }
 }

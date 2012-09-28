@@ -39,6 +39,17 @@ import eu.emi.es.client.common.UserConfig;
 /**
  * Combines the functionality of the ServiceEndpointRetriever
  * 
+ * The ComputingServiceRetriever retrieves information about computing services
+ * by querying service registries (EMIR, EGIIS) and the local information system
+ * of computing elements (through LDAP and WS). The discovery is recursive: if
+ * querying a registry service returns more registries those will also be
+ * queried, and all the computing services returned by a registry query will be
+ * contacted.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/ComputingServiceRetriever.h"
+ * >ComputingServiceRetriever.h</a>
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 08:25:00
@@ -86,14 +97,29 @@ public class ComputingServiceRetriever extends
         this.consumers = new ArrayList<EntityConsumer<ComputingServiceType>>();
     }
 
+    /**
+     * Add an endpoint to the list of endpoints.
+     * 
+     * @param _service
+     */
     public void addEndpoint(Endpoint _service) {
         endpoints.add(_service);
     }
 
+    /**
+     * Add a consumer to the list of consumers.
+     * 
+     * @param c
+     */
     public void addConsumer(EntityConsumer<ComputingServiceType> c) {
         consumers.add(c);
     }
 
+    /**
+     * Remove a consumer from the list of consumers.
+     * 
+     * @param c
+     */
     public void removeConsumer(EntityConsumer<ComputingServiceType> c) {
         consumers.remove(c);
     }
@@ -103,6 +129,16 @@ public class ComputingServiceRetriever extends
      */
     public void addEntity(Endpoint _entity) {
         addEndpoint(_entity);
+    }
+
+    /**
+     * Block on this object to wait for the discovery process to finish.
+     * 
+     * This is the wait() method from the C++ API. However, {@link #wait()} is
+     * already defined final in {@link Object} and cannot be overridden.
+     */
+    public void block() {
+        // TODO method stub
     }
 
 }

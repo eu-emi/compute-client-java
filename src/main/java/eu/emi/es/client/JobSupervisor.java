@@ -32,12 +32,24 @@
 package eu.emi.es.client;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import eu.emi.es.client.common.UserConfig;
 
 /**
- * Job management
+ * The JobSupervisor class manages a list of existing jobs (status,
+ * cancellation, etc.). It uses specialised plugins in order to obtain
+ * information and request execution of job related commands. The specialised
+ * plugins support different interfaces and middlewares (the JobControllerPlugin
+ * classes).
+ * 
+ * A {@link JobSupervisor} keeps track of selected jobs. Various selection
+ * criteria can be applied to do the selection.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/JobSupervisor.h"
+ * >JobSupervisor.h</a>
  * 
  * @author bjoernh
  * 
@@ -49,17 +61,34 @@ public class JobSupervisor implements EntityConsumer<Job> {
     private final UserConfig uc;
     private final List<Job> jobs;
 
+    private final List<Job> selected;
+
+    private final List<URL> processed;
+    private final List<URL> notProcessed;
+
     /**
+     * To create a JobSupervisor object, you need a UserConfig (which contains
+     * attributes on how to locate user's credentials), and a list of Job
+     * objects.
      * 
      * @param _uc
      * @param _jobs
      */
     public JobSupervisor(UserConfig _uc, List<Job> _jobs) {
         this.uc = _uc;
-        this.jobs = _jobs;
+        if (_jobs != null) {
+            this.jobs = _jobs;
+        } else {
+            this.jobs = new ArrayList<Job>();
+        }
+        this.selected = new ArrayList<Job>();
+
+        this.processed = new ArrayList<URL>();
+        this.notProcessed = new ArrayList<URL>();
     }
 
     /**
+     * Add a job to the list of supervised Jobs.
      * 
      * @param _job
      * @return
@@ -69,6 +98,8 @@ public class JobSupervisor implements EntityConsumer<Job> {
     }
 
     /**
+     * Implementation of the EntityConsumer interface for Jobs. This delegates
+     * to the {@link #addJob(Job)} method.
      * 
      * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
      */
@@ -76,64 +107,134 @@ public class JobSupervisor implements EntityConsumer<Job> {
         addJob(_job);
     }
 
+    /**
+     * Select jobs that are valid.
+     */
     public void selectValid() {
 
     }
 
+    /**
+     * Select jobs in any of the given states.
+     * 
+     * @param _states
+     */
     public void selectByStatus(List<JobState> _states) {
-
+        for (Job job : jobs) {
+            if (_states.contains(job.getState())) {
+                selected.add(job);
+            }
+        }
     }
 
     public void selectById(List<URL> _ids) {
-
+        clearSelection();
+        // then add matching jobs
     }
 
     public List<Job> getSelectedJobs() {
-        return null;
+        return selected;
     }
 
     public List<Job> getAllJobs() {
-        return null;
+        return jobs;
     }
 
     public void clearSelection() {
-
+        selected.clear();
     }
 
+    /**
+     * Update all {@link Job}s' states from the compute element.
+     */
     public void update() {
 
     }
 
+    /**
+     * To retrieve the output files of all jobs.
+     * 
+     * QUESTION: All jobs or only selected ones?
+     * 
+     * @param _downloadDirPrefix
+     * @param _useJobName
+     * @param _force
+     * @param _downloadDirectories
+     * @return
+     */
     public boolean retrieve(String _downloadDirPrefix, boolean _useJobName,
             boolean _force, List<String> _downloadDirectories) {
         return false;
     }
 
+    /**
+     * Renew job credentials.
+     * 
+     * @return
+     */
     public boolean renew() {
         return false;
     }
 
+    /**
+     * Resume a job.
+     * 
+     * @return
+     */
     public boolean resume() {
         return false;
     }
 
+    /**
+     * Cancel a job.
+     * 
+     * @return
+     */
     public boolean cancel() {
         return false;
     }
 
+    /**
+     * Clean jobs.
+     * 
+     * @return
+     */
     public boolean clean() {
         return false;
     }
 
+    /**
+     * To resubmit jobs (where destination is 1 if the job should be resubmitted
+     * to the same target, 2 if anywhere but not the same, and any other if can
+     * be resubmitted to any target including the same).
+     * 
+     * @param _destination
+     * @param _endpoints
+     * @param _resubmittedJobs
+     * @param _rejectedEndpoints
+     * @return
+     */
     public boolean resubmit(int _destination, List<Endpoint> _endpoints,
             List<Job> _resubmittedJobs, List<String> _rejectedEndpoints) {
         return false;
     }
 
+    /**
+     * After a job management command the IDs of jobs successfully processed and
+     * the IDs of jobs not processed can be retrieved with these methods.
+     * 
+     * @return
+     */
     public List<URL> getIdsProcessed() {
         return null;
     }
 
+    /**
+     * After a job management command the IDs of jobs successfully processed and
+     * the IDs of jobs not processed can be retrieved with these methods.
+     * 
+     * @return
+     */
     public List<URL> getIdsNotProcessed() {
         return null;
     }

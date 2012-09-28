@@ -38,6 +38,22 @@ import eu.emi.es.client.common.UserConfig;
 /**
  * Represents an already submitted Job
  * 
+ * The Job class represents an already submitted job. It is returned by the
+ * submission methods (see Submitter class) or by the JobListRetriever class (to
+ * get a list of jobs from a computing element) and it is needed for batch job
+ * management (see the JobSupervisor class), but it also provides methods to
+ * manage the single job it represents. Most of the member attributes contained
+ * in this class are directly linked to the ComputingActivity defined in the
+ * GLUE2 Specification. A Job object can be serialized into an XML document,
+ * then later recreated from that. So the Job object created by the job
+ * submission process can be saved to disk and later can be recreated for job
+ * management.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/Job.h"
+ * >Job.h</a>
+ * 
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 08:32:26
@@ -87,4 +103,12 @@ public class Job {
     public boolean retrieve(UserConfig _uc, URL _destination, boolean _force) {
         return false;
     }
+
+    /**
+     * @return the state
+     */
+    public JobState getState() {
+        return state;
+    }
+
 }

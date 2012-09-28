@@ -32,6 +32,14 @@
 package eu.emi.es.client;
 
 /**
+ * Holding the status of the query process for an Endpoint queried by an
+ * EntityRetriever instance. It consists of a status enum, and a description
+ * string.
+ * 
+ * <a href=
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/EndpointQueryingStatus.h"
+ * >EndpointQueryingStatus.h</a>
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 08:36:18
