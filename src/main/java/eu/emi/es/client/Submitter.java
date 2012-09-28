@@ -31,6 +31,7 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -99,25 +100,8 @@ public class Submitter {
      * @param _desc
      * @return
      */
-    public boolean submit(ExecutionTarget _target, JobDescription _desc) {
-        // TODO: empty method stub
-        return false;
-    }
-
-    /**
-     * To submit one or more job descriptions (strings or objects) to a single
-     * ExecutionTarget object (with getting the resulting Job object as an
-     * output argument or through registered consumers).
-     * 
-     * @param _target
-     * @param _desc
-     * @param _job
-     * @return
-     */
-    public boolean submit(ExecutionTarget _target, JobDescription _desc,
-            Job _job) {
-        // TODO empty method stub
-        return false;
+    public Job submit(ExecutionTarget _target, JobDescription _desc) {
+        return _target.submit(uc, _desc);
     }
 
     /**
@@ -130,8 +114,8 @@ public class Submitter {
      * @return
      */
     public boolean submit(ExecutionTarget _target, List<JobDescription> _descs) {
-        // TODO empty method stub
-        return false;
+        List<Job> jobs = new ArrayList<Job>();
+        return submit(_target, _descs, jobs);
     }
 
     /**
@@ -146,8 +130,15 @@ public class Submitter {
      */
     public boolean submit(ExecutionTarget _target, List<JobDescription> _descs,
             List<Job> _jobs) {
-        // TODO empty method stub
-        return false;
+        boolean success = true;
+        for (JobDescription jobDescription : _descs) {
+            try {
+                _jobs.add(_target.submit(uc, jobDescription));
+            } catch (Exception e) {
+                success = false;
+            }
+        }
+        return success;
     }
 
     // Java type erasure does not allow these alternative methods, as they

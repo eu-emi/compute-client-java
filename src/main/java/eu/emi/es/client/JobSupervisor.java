@@ -51,6 +51,10 @@ import eu.emi.es.client.common.UserConfig;
  * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/JobSupervisor.h"
  * >JobSupervisor.h</a>
  * 
+ * The idea is that the Resubmit, Retrieve, Renew, Resume, Cancel and Clean
+ * methods works on the selected jobs. If any of these method fails to complete
+ * a request for a particular job, that job will be deselected.
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 08:21:46
@@ -152,9 +156,8 @@ public class JobSupervisor implements EntityConsumer<Job> {
     }
 
     /**
-     * To retrieve the output files of all jobs.
+     * To retrieve the output files of selected jobs.
      * 
-     * QUESTION: All jobs or only selected ones?
      * 
      * @param _downloadDirPrefix
      * @param _useJobName
@@ -226,7 +229,7 @@ public class JobSupervisor implements EntityConsumer<Job> {
      * @return
      */
     public List<URL> getIdsProcessed() {
-        return null;
+        return processed;
     }
 
     /**
@@ -236,7 +239,7 @@ public class JobSupervisor implements EntityConsumer<Job> {
      * @return
      */
     public List<URL> getIdsNotProcessed() {
-        return null;
+        return notProcessed;
     }
 
 }

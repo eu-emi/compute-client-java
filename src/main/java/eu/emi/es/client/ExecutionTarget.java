@@ -31,6 +31,21 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.ogf.schemas.glue.x2009.x03.spec20R1.AdminDomainT;
+import org.ogf.schemas.glue.x2009.x03.spec20R1.ApplicationEnvironmentT;
+import org.ogf.schemas.glue.x2009.x03.spec20R1.ComputingEndpointT;
+import org.ogf.schemas.glue.x2009.x03.spec20R1.ComputingManagerT;
+import org.ogf.schemas.glue.x2009.x03.spec20R1.ComputingServiceT;
+import org.ogf.schemas.glue.x2009.x03.spec20R1.ExecutionEnvironmentT;
+import org.ogf.schemas.glue.x2009.x03.spec20R1.LocationT;
+
+import eu.emi.es.client.common.UserConfig;
+
 /**
  * This class describes a target which accepts computing jobs. This is usually a
  * queue on a computing element accessible through a single interface. If a
@@ -51,5 +66,71 @@ package eu.emi.es.client;
  * 
  */
 public class ExecutionTarget {
+    private final LocationT location;
+    private final AdminDomainT adminDomain;
+    private final ComputingServiceT computingService;
+    private final ComputingEndpointT computingEndpoint;
+    private final ComputingManagerT computingManager;
+    private final ExecutionEnvironmentT executionEnvironment;
+    private final Map<String, Double> benchmarks;
+    private final List<ApplicationEnvironmentT> applicationEnvironments;
 
+    /**
+     * 
+     */
+    public ExecutionTarget() {
+        this(LocationT.Factory.newInstance(), AdminDomainT.Factory
+                .newInstance(), ComputingServiceT.Factory.newInstance(),
+                ComputingEndpointT.Factory.newInstance(),
+                ComputingManagerT.Factory.newInstance(),
+                ExecutionEnvironmentT.Factory.newInstance(),
+                new HashMap<String, Double>(),
+                new ArrayList<ApplicationEnvironmentT>());
+    }
+
+    /**
+     * 
+     * @param _location
+     * @param _adminDomain
+     * @param _computingService
+     * @param _computingEndpoint
+     * @param _computingManager
+     * @param _executionEnvironment
+     * @param _benchmarks
+     * @param _applicationEnvironments
+     */
+    public ExecutionTarget(LocationT _location, AdminDomainT _adminDomain,
+            ComputingServiceT _computingService,
+            ComputingEndpointT _computingEndpoint,
+            ComputingManagerT _computingManager,
+            ExecutionEnvironmentT _executionEnvironment,
+            Map<String, Double> _benchmarks,
+            List<ApplicationEnvironmentT> _applicationEnvironments) {
+        this.location = _location;
+        this.adminDomain = _adminDomain;
+        this.computingService = _computingService;
+        this.computingEndpoint = _computingEndpoint;
+        this.computingManager = _computingManager;
+        this.executionEnvironment = _executionEnvironment;
+        this.benchmarks = _benchmarks;
+        this.applicationEnvironments = _applicationEnvironments;
+    }
+
+    /**
+     * 
+     * @param _uc
+     * @param _jd
+     * @return
+     */
+    public Job submit(UserConfig _uc, JobDescription _jd) {
+        return null;
+    }
+
+    /**
+     * 
+     * @param _jd
+     */
+    public void registerJobSubmission(JobDescription _jd) {
+
+    }
 }

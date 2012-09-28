@@ -31,6 +31,8 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import eu.unicore.hila.job.model.JobModel;
+
 /**
  * This class is used as a structure to hold job description attributes, not
  * from a particular language but is meant to be a general structure. It also
@@ -46,7 +48,10 @@ package eu.emi.es.client;
  * 
  *         17.09.2012 08:21:39
  * 
+ *         Could be deprecated, but we'll wrap it for now. For the Java version
+ *         of this API, we'll resort to hila-job-model for a start.
+ * 
  */
-public class JobDescription {
+public class JobDescription extends JobModel {
 
 }
