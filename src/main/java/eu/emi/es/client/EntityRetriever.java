@@ -56,7 +56,7 @@ import eu.emi.es.client.common.UserConfig;
  * </ul>
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/EntityRetriever.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/EntityRetriever.h"
  * >EntityRetriever.h</a>
  * 
  * @author bjoernh

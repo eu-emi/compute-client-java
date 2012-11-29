@@ -48,7 +48,7 @@ import eu.emi.es.client.common.UserConfig;
  * criteria can be applied to do the selection.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/JobSupervisor.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/JobSupervisor.h"
  * >JobSupervisor.h</a>
  * 
  * The idea is that the Resubmit, Retrieve, Renew, Resume, Cancel and Clean

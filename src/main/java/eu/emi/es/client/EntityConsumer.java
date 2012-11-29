@@ -36,8 +36,8 @@ package eu.emi.es.client;
  * having a single pure virtual method, thus in Java terms it is an interface.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/EntityRetriever.h>EntityRetriever.h</a
- * >
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/EntityRetriever.h>EntityRetriever.h</
+ * a >
  * 
  * @author bjoernh
  * 

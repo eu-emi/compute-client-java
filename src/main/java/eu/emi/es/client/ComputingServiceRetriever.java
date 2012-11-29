@@ -47,7 +47,7 @@ import eu.emi.es.client.common.UserConfig;
  * contacted.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/ComputingServiceRetriever.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/ComputingServiceRetriever.h"
  * >ComputingServiceRetriever.h</a>
  * 
  * @author bjoernh

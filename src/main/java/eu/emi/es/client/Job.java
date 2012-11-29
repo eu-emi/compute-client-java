@@ -50,7 +50,7 @@ import eu.emi.es.client.common.UserConfig;
  * management.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/Job.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/Job.h"
  * >Job.h</a>
  * 
  * 

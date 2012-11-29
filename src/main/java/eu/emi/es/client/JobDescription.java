@@ -41,7 +41,7 @@ import eu.unicore.hila.job.model.JobModel;
  * job description from one format to another).
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/JobDescription.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/JobDescription.h"
  * >JobDescription.h</a>
  * 
  * @author bjoernh

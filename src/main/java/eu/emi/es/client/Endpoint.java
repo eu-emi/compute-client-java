@@ -46,7 +46,7 @@ import java.util.Set;
  * be submitted to a computing element related to this endpoint.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/Endpoint.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/Endpoint.h"
  * >Endpoint.h</a>
  * 
  * @author bjoernh

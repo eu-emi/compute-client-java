@@ -37,7 +37,7 @@ package eu.emi.es.client;
  * string.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/EndpointQueryingStatus.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/EndpointQueryingStatus.h"
  * >EndpointQueryingStatus.h</a>
  * 
  * @author bjoernh

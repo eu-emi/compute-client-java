@@ -57,7 +57,7 @@ import eu.emi.es.client.common.UserConfig;
  * ComputingServiceType objects.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/ExecutionTarget.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/ExecutionTarget.h"
  * >ExecutionTarget.h</a>
  * 
  * @author bjoernh

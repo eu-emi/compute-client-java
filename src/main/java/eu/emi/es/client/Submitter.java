@@ -48,7 +48,7 @@ import eu.emi.es.client.common.UserConfig;
  * ComputingServiceRetriever and Broker classes.
  * 
  * <a href=
- * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/client/Submitter.h"
+ * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/Submitter.h"
  * >Submitter.h</a>
  * 
  * @author bjoernh
