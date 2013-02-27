@@ -64,7 +64,8 @@ import eu.emi.es.client.common.UserConfig;
  *         17.09.2012 08:24:34
  * 
  */
-public class EntityRetriever<T> implements EntityConsumer<T> {
+public class EntityRetriever<T> extends EntityContainer<T> implements
+        EntityConsumer<T> {
 
     private final UserConfig uc;
     private final EndpointQueryOptions<T> options;
@@ -81,7 +82,7 @@ public class EntityRetriever<T> implements EntityConsumer<T> {
     public EntityRetriever(UserConfig _uc, EndpointQueryOptions<T> _options) {
         this.uc = _uc;
         this.options = _options;
-        
+
         this.endpoints = new ArrayList<Endpoint>();
         this.consumers = new ArrayList<EntityConsumer<T>>();
         this.queryingStatuses = new HashMap<Endpoint, EndpointQueryingStatus>();
@@ -109,13 +110,6 @@ public class EntityRetriever<T> implements EntityConsumer<T> {
      */
     public void addEndpoint(Endpoint _ep) {
         endpoints.add(_ep);
-    }
-
-    /**
-     * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
-     */
-    public void addEntity(T _job) {
-
     }
 
     /**
