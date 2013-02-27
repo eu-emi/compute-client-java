@@ -33,8 +33,15 @@ package eu.emi.es.client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.log4j.Logger;
+import org.ogf.schemas.glue._2009._03.spec_2.ServiceT;
 
 import eu.emi.es.client.common.UserConfig;
+import eu.unicore.hila.HiLA;
 
 /**
  * Combines the functionality of the ServiceEndpointRetriever
@@ -56,89 +63,150 @@ import eu.emi.es.client.common.UserConfig;
  * 
  */
 public class ComputingServiceRetriever extends
-        EntityContainer<ComputingServiceType> implements
-        EntityConsumer<Endpoint> {
+		EntityContainer<ComputingServiceType> implements Runnable,
+		EntityConsumer<ComputingServiceType> {
 
-    private final UserConfig uc;
-    private final List<Endpoint> endpoints;
-    private final List<String> rejectedServices;
-    private final List<String> preferredInterfaceNames;
-    private final List<String> capabilityFilter;
+	private static final Logger log = Logger
+			.getLogger(ComputingServiceRetriever.class);
 
-    private final List<EntityConsumer<ComputingServiceType>> consumers;
+	private final UserConfig uc;
+	private final List<Endpoint> endpoints;
+	private final List<String> rejectedServices;
+	private final List<String> preferredInterfaceNames;
+	private final List<String> capabilityFilter;
 
-    /**
-     * 
-     * @param _uc
-     */
-    public ComputingServiceRetriever(UserConfig _uc) {
-        this(_uc, new ArrayList<Endpoint>(), new ArrayList<String>(),
-                new ArrayList<String>(), new ArrayList<String>());
-    }
+	private final List<EntityConsumer<ComputingServiceType>> consumers;
 
-    /**
-     * 
-     * @param _uc
-     * @param _services
-     * @param _rejectedServices
-     * @param _preferredInterfaceNames
-     * @param _capabilityFilter
-     */
-    public ComputingServiceRetriever(UserConfig _uc, List<Endpoint> _services,
-            List<String> _rejectedServices,
-            List<String> _preferredInterfaceNames,
-            List<String> _capabilityFilter) {
-        this.uc = _uc;
-        this.endpoints = _services;
-        this.rejectedServices = _rejectedServices;
-        this.preferredInterfaceNames = _preferredInterfaceNames;
-        this.capabilityFilter = _capabilityFilter;
+	private final List<ExecutionTarget> executionTargets;
 
-        this.consumers = new ArrayList<EntityConsumer<ComputingServiceType>>();
-    }
+	private boolean running;
 
-    /**
-     * Add an endpoint to the list of endpoints.
-     * 
-     * @param _service
-     */
-    public void addEndpoint(Endpoint _service) {
-        endpoints.add(_service);
-    }
+	/**
+	 * 
+	 * @param _uc
+	 */
+	public ComputingServiceRetriever(UserConfig _uc) {
+		this(_uc, new ArrayList<Endpoint>(), new ArrayList<String>(),
+				new ArrayList<String>(), new ArrayList<String>());
+	}
 
-    /**
-     * Add a consumer to the list of consumers.
-     * 
-     * @param c
-     */
-    public void addConsumer(EntityConsumer<ComputingServiceType> c) {
-        consumers.add(c);
-    }
+	/**
+	 * 
+	 * @param _uc
+	 * @param _services
+	 * @param _rejectedServices
+	 * @param _preferredInterfaceNames
+	 * @param _capabilityFilter
+	 */
+	public ComputingServiceRetriever(UserConfig _uc, List<Endpoint> _services,
+			List<String> _rejectedServices,
+			List<String> _preferredInterfaceNames,
+			List<String> _capabilityFilter) {
+		this.uc = _uc;
+		this.endpoints = _services;
+		this.rejectedServices = _rejectedServices;
+		this.preferredInterfaceNames = _preferredInterfaceNames;
+		this.capabilityFilter = _capabilityFilter;
 
-    /**
-     * Remove a consumer from the list of consumers.
-     * 
-     * @param c
-     */
-    public void removeConsumer(EntityConsumer<ComputingServiceType> c) {
-        consumers.remove(c);
-    }
+		this.consumers = new ArrayList<EntityConsumer<ComputingServiceType>>();
+		this.executionTargets = new ArrayList<ExecutionTarget>();
 
-    /**
-     * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
-     */
-    public void addEntity(Endpoint _entity) {
-        addEndpoint(_entity);
-    }
+		if (endpoints == null || endpoints.isEmpty()) {
+			running = false;
+		} else {
+			HiLA.getDaemonExecutor().scheduleAtFixedRate(this, 0, 60,
+					TimeUnit.SECONDS);
+			running = true;
+		}
+	}
 
-    /**
-     * Block on this object to wait for the discovery process to finish.
-     * 
-     * This is the wait() method from the C++ API. However, {@link #wait()} is
-     * already defined final in {@link Object} and cannot be overridden.
-     */
-    public void block() {
-        // TODO method stub
-    }
+	/**
+	 * Add an endpoint to the list of endpoints.
+	 * 
+	 * @param _service
+	 */
+	public synchronized void addEndpoint(Endpoint _service) {
+		endpoints.add(_service);
+		if (!running) {
+			HiLA.getDaemonExecutor().scheduleAtFixedRate(this, 0, 60,
+					TimeUnit.SECONDS);
+			running = true;
+		}
+	}
+
+	/**
+	 * Add a consumer to the list of consumers.
+	 * 
+	 * @param _consumer
+	 */
+	public void addConsumer(EntityConsumer<ComputingServiceType> _consumer) {
+		consumers.add(_consumer);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public List<ExecutionTarget> getExecutionTargets() {
+		return executionTargets;
+	}
+
+	/**
+	 * Remove a consumer from the list of consumers.
+	 * 
+	 * @param c
+	 */
+	public void removeConsumer(EntityConsumer<ComputingServiceType> c) {
+		consumers.remove(c);
+	}
+
+	/**
+	 * Block on this object to wait for the discovery process to finish.
+	 * 
+	 * This is the wait() method from the C++ API. However, {@link #wait()} is
+	 * already defined final in {@link Object} and cannot be overridden.
+	 */
+	public void block() {
+		// TODO method stub
+	}
+
+	/**
+	 * Start the retrieval process. This is supposed
+	 * 
+	 * @see java.lang.Runnable#run()
+	 */
+	public void run() {
+		List<Future<List<ServiceT>>> cstFutures = new ArrayList<Future<List<ServiceT>>>();
+		for (Endpoint endpoint : endpoints) {
+			ComputingServiceQuery epq = new ComputingServiceQuery(endpoint, uc,
+					this.capabilityFilter);
+			cstFutures.add(HiLA.getDaemonExecutor().submit(epq));
+		}
+
+		for (Future<List<ServiceT>> future : cstFutures) {
+			try {
+				List<ServiceT> cst = future.get();
+				for (ServiceT computingServiceType : cst) {
+					createExecutionTarget(computingServiceType);
+				}
+			} catch (InterruptedException e) {
+				log.error(
+						"Something went wrong while generating list of computing services.",
+						e);
+			} catch (ExecutionException e) {
+				log.error(
+						"Something went wrong while generating list of computing services.",
+						e);
+			}
+		}
+
+	}
+
+	/**
+	 * @param computingServiceType
+	 */
+	private void createExecutionTarget(ServiceT computingServiceType) {
+
+	}
 
 }
