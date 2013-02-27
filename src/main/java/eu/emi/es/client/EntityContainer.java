@@ -40,7 +40,7 @@ import java.util.List;
  *         17.09.2012 13:56:27
  * 
  */
-public class EntityContainer<T> {
+public class EntityContainer<T> implements EntityConsumer<T> {
 
     private final List<T> entities;
 
@@ -49,6 +49,13 @@ public class EntityContainer<T> {
 	 */
     public EntityContainer() {
         this.entities = new ArrayList<T>();
+    }
+
+    /**
+     * @see eu.emi.es.client.EntityConsumer#addEntity(java.lang.Object)
+     */
+    public void addEntity(T _entity) {
+        entities.add(_entity);
     }
 
 }
