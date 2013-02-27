@@ -31,34 +31,29 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
-import eu.emi.es.client.ScalableTime.ScalableIntTime;
-
 /**
- * A container for resource requirements of {@link Job}s.
- * 
  * @author bjoernh
  * 
- *         17.09.2012 09:32:20
+ *         29.11.2012 16:16:29
  * 
  */
-public class ResourcesType {
-    SoftwareRequirement operatingSystem;
-    String platform;
-    String networkInfo;
-    Range<Integer> individualPhysicalMemory;
-    Range<Integer> individualVirtualMemory;
-    DiskSpaceRequirementType diskSpaceRequirement;
-    Period sessionLifeTime;
-    SessionDirectoryAccessMode sessionDirectoryAccess;
-    ScalableIntTime individualCpuTime;
-    ScalableIntTime totalCpuTime;
-    ScalableIntTime individualWallTime;
-    ScalableIntTime totalWallTime;
-    NodeAccessType nodeAccess;
-    SoftwareRequirement ceType;
-    SlotRequirementType slotRequirement;
-    ParallelEnvironmentType parallelEnvironment;
-    OptIn<String> coprocessor;
-    String queueName;
-    SoftwareRequirement runtimeEnvironment;
+public class ScalableTime<T> {
+
+    public ScalableTime() {
+        benchmark = new Pair<String, Double>("", -1.0);
+    }
+
+    private Pair<String, Double> benchmark;
+    Range<T> range;
+
+    class ScalableIntTime extends ScalableTime<Integer> {
+        Integer scaleMin(double s) {
+            return (int) (range.getMin() * benchmark.second / s);
+        }
+
+        Integer scaleMax(double s) {
+            return (int) (range.getMax() * benchmark.second / s);
+        }
+    };
+
 }

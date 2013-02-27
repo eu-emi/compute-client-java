@@ -31,34 +31,22 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
-import eu.emi.es.client.ScalableTime.ScalableIntTime;
-
 /**
- * A container for resource requirements of {@link Job}s.
- * 
  * @author bjoernh
  * 
- *         17.09.2012 09:32:20
+ *         29.11.2012 16:19:49
  * 
  */
-public class ResourcesType {
-    SoftwareRequirement operatingSystem;
-    String platform;
-    String networkInfo;
-    Range<Integer> individualPhysicalMemory;
-    Range<Integer> individualVirtualMemory;
-    DiskSpaceRequirementType diskSpaceRequirement;
-    Period sessionLifeTime;
-    SessionDirectoryAccessMode sessionDirectoryAccess;
-    ScalableIntTime individualCpuTime;
-    ScalableIntTime totalCpuTime;
-    ScalableIntTime individualWallTime;
-    ScalableIntTime totalWallTime;
-    NodeAccessType nodeAccess;
-    SoftwareRequirement ceType;
-    SlotRequirementType slotRequirement;
-    ParallelEnvironmentType parallelEnvironment;
-    OptIn<String> coprocessor;
-    String queueName;
-    SoftwareRequirement runtimeEnvironment;
+public class Pair<T1, T2> {
+
+    T1 first;
+    T2 second;
+
+    /**
+     * 
+     */
+    public Pair(T1 _first, T2 _second) {
+        first = _first;
+        second = _second;
+    }
 }

@@ -31,34 +31,55 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
-import eu.emi.es.client.ScalableTime.ScalableIntTime;
-
 /**
- * A container for resource requirements of {@link Job}s.
- * 
  * @author bjoernh
  * 
- *         17.09.2012 09:32:20
+ *         29.11.2012 16:11:21
  * 
  */
-public class ResourcesType {
-    SoftwareRequirement operatingSystem;
-    String platform;
-    String networkInfo;
-    Range<Integer> individualPhysicalMemory;
-    Range<Integer> individualVirtualMemory;
-    DiskSpaceRequirementType diskSpaceRequirement;
-    Period sessionLifeTime;
-    SessionDirectoryAccessMode sessionDirectoryAccess;
-    ScalableIntTime individualCpuTime;
-    ScalableIntTime totalCpuTime;
-    ScalableIntTime individualWallTime;
-    ScalableIntTime totalWallTime;
-    NodeAccessType nodeAccess;
-    SoftwareRequirement ceType;
-    SlotRequirementType slotRequirement;
-    ParallelEnvironmentType parallelEnvironment;
-    OptIn<String> coprocessor;
-    String queueName;
-    SoftwareRequirement runtimeEnvironment;
+public class Range<T> {
+    private T min;
+    private T max;
+
+    public Range(T _value) {
+        this(_value, _value);
+    }
+
+    /**
+     * 
+     */
+    public Range(T _min, T _max) {
+        this.setMin(_min);
+        this.setMax(_max);
+    }
+
+    /**
+     * @return the min
+     */
+    public T getMin() {
+        return min;
+    }
+
+    /**
+     * @param min
+     *            the min to set
+     */
+    public void setMin(T min) {
+        this.min = min;
+    }
+
+    /**
+     * @return the max
+     */
+    public T getMax() {
+        return max;
+    }
+
+    /**
+     * @param max
+     *            the max to set
+     */
+    public void setMax(T max) {
+        this.max = max;
+    }
 }
