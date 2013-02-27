@@ -31,15 +31,20 @@
  ********************************************************************************/
 package eu.emi.es.client.common;
 
+import eu.unicore.util.httpclient.ClientProperties;
+import eu.unicore.util.httpclient.IClientConfiguration;
+
 /**
  * 
  * 
  * @author bjoernh
  * 
  *         17.09.2012 08:30:09
+ * @deprecated Use ClientProperties instead
  * 
  */
-public class UserConfig {
+public class UserConfig extends ClientProperties implements
+        IClientConfiguration {
     private String proxyPath;
     private String certificatePath;
     private String keyPath;
