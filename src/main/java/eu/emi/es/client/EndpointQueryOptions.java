@@ -35,6 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is used to configure the different {@link EntityRetriever}
+ * instances. It has a different implementation for the
+ * {@link ServiceEndpointRetriever} (EntityRetriever<Endpoint>) instance.
+ * 
  * @author bjoernh
  * 
  *         17.09.2012 13:49:55

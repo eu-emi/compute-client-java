@@ -45,5 +45,11 @@ package eu.emi.es.client;
  * 
  */
 public interface EntityConsumer<T> {
+
+    /**
+     * Receive a new instance of an entity.
+     * 
+     * @param _entity
+     */
     public void addEntity(T _entity);
 }
