@@ -31,6 +31,7 @@
  ********************************************************************************/
 package eu.emi.es.client;
 
+import java.io.Serializable;
 import java.net.URL;
 
 import eu.emi.es.client.common.UserConfig;
@@ -59,8 +60,54 @@ import eu.emi.es.client.common.UserConfig;
  *         17.09.2012 08:32:26
  * 
  */
-public class Job {
+public class Job implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -6452874697439455159L;
+
     private JobState state;
+
+    // mandatory attributes
+    private final String jobId;
+    private final String serviceInformationUrl;
+    private final String serviceInformationEndpointInterfaceName;
+    private final String jobStatusUrl;
+    private final String jobStatusInterfaceName;
+    private final String jobManagementUrl;
+    private final String jobMangementInterfaceName;
+    private final String stageInDir;
+    private final String stageOutDir;
+    private final String sessionDir;
+
+    // optional attributes
+    private final String name;
+    private final String idFromEndpoint;
+
+    /**
+     * 
+     */
+    public Job(String _jobId, String _serviceInformationUrl,
+            String _serviceInformationEndpointInterfaceName,
+            String _jobStatusUrl, String _jobStatusInterfaceName,
+            String _jobManagementUrl, String _jobManagementInterfaceName,
+            String _stageInDir, String _stageOutDir, String _sessionDir,
+            String _name, String _idFromEndpoint) {
+        this.jobId = _jobId;
+        this.serviceInformationUrl = _serviceInformationUrl;
+        this.serviceInformationEndpointInterfaceName = _serviceInformationEndpointInterfaceName;
+        this.jobStatusUrl = _jobStatusUrl;
+        this.jobStatusInterfaceName = _jobStatusInterfaceName;
+        this.jobManagementUrl = _jobManagementUrl;
+        this.jobMangementInterfaceName = _jobManagementInterfaceName;
+        this.stageInDir = _stageInDir;
+        this.stageOutDir = _stageOutDir;
+        this.sessionDir = _sessionDir;
+
+        this.name = _name;
+        this.idFromEndpoint = _idFromEndpoint;
+    }
 
     /**
      * The C++ implementation takes an XMLNode object, need to check how this
@@ -109,6 +156,90 @@ public class Job {
      */
     public JobState getState() {
         return state;
+    }
+
+    /**
+     * @return the jobId
+     */
+    public String getJobId() {
+        return jobId;
+    }
+
+    /**
+     * @return the serviceInformationUrl
+     */
+    public String getServiceInformationUrl() {
+        return serviceInformationUrl;
+    }
+
+    /**
+     * @return the serviceInformationEndpointInterfaceName
+     */
+    public String getServiceInformationEndpointInterfaceName() {
+        return serviceInformationEndpointInterfaceName;
+    }
+
+    /**
+     * @return the jobStatusUrl
+     */
+    public String getJobStatusUrl() {
+        return jobStatusUrl;
+    }
+
+    /**
+     * @return the jobStatusInterfaceName
+     */
+    public String getJobStatusInterfaceName() {
+        return jobStatusInterfaceName;
+    }
+
+    /**
+     * @return the jobManagementUrl
+     */
+    public String getJobManagementUrl() {
+        return jobManagementUrl;
+    }
+
+    /**
+     * @return the jobMangementInterfaceName
+     */
+    public String getJobMangementInterfaceName() {
+        return jobMangementInterfaceName;
+    }
+
+    /**
+     * @return the stageInDir
+     */
+    public String getStageInDir() {
+        return stageInDir;
+    }
+
+    /**
+     * @return the stageOutDir
+     */
+    public String getStageOutDir() {
+        return stageOutDir;
+    }
+
+    /**
+     * @return the sessionDir
+     */
+    public String getSessionDir() {
+        return sessionDir;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the idFromEndpoint
+     */
+    public String getIdFromEndpoint() {
+        return idFromEndpoint;
     }
 
 }
