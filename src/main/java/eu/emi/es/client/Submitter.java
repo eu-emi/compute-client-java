@@ -38,14 +38,15 @@ import java.util.Map;
 import java.util.Set;
 
 import eu.emi.es.client.common.UserConfig;
+import eu.emi.es.client.exceptions.JobSubmissionFailed;
 
 /**
- * The Submitter class can be used to submit job descriptions to computing
- * elements. It returns a Job object for each successful submission. It can
- * submit to a single ExecutionTarget or can invoke resource discovery, do
- * match-making and sorting of the computing resources, and then submit to
- * appropriate resource. The latter option utilizes the
- * ComputingServiceRetriever and Broker classes.
+ * The {@link Submitter} class can be used to submit job descriptions to
+ * computing elements. It returns a {@link Job} object for each successful
+ * submission. It can submit to a single {@link ExecutionTarget} or can invoke
+ * resource discovery, do match-making and sorting of the computing resources,
+ * and then submit to appropriate resource. The latter option utilizes the
+ * {@link ComputingServiceRetriever} and {@link Broker} classes.
  * 
  * <a href=
  * "http://svn.nordugrid.org/trac/nordugrid/browser/arc1/trunk/src/hed/libs/compute/Submitter.h"
@@ -99,8 +100,10 @@ public class Submitter {
      * @param _target
      * @param _desc
      * @return
+     * @throws JobSubmissionFailed
      */
-    public Job submit(ExecutionTarget _target, JobDescription _desc) {
+    public Job submit(ExecutionTarget _target, JobDescription _desc)
+            throws JobSubmissionFailed {
         return _target.submit(uc, _desc);
     }
 
